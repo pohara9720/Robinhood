@@ -37,7 +37,6 @@ for row in table_rows:
     name = row.find('td', {'aria-label': 'Name'}).text
     price_text = row.find('td',{'aria-label':'Price (Intraday)'}).span.text
     price = convert_price(price_text)
-    print(price_text)
     dollar_change = row.find('td', {'aria-label': 'Change'}).span.text
     percent_change = row.find('td', {'aria-label': '% Change'}).span.text
     volume = row.find('td', {'aria-label': 'Volume'}).span.text
