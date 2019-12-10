@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import json 
+from helpers import convert_price
 
 url = 'https://finance.yahoo.com/gainers'
 response = requests.get(url,timeout=5)
@@ -34,7 +35,9 @@ table_rows = soup.find_all('tr',{'class':'simpTblRow'})
 for row in table_rows:
     symbol = row.find('td', {'aria-label': 'Symbol'}).a.text
     name = row.find('td', {'aria-label': 'Name'}).text
-    price = row.find('td',{'aria-label':'Price (Intraday)'}).span.text
+    price_text = row.find('td',{'aria-label':'Price (Intraday)'}).span.text
+    price = convert_price(price_text)
+    print(price_text)
     dollar_change = row.find('td', {'aria-label': 'Change'}).span.text
     percent_change = row.find('td', {'aria-label': '% Change'}).span.text
     volume = row.find('td', {'aria-label': 'Volume'}).span.text
@@ -44,6 +47,5 @@ for row in table_rows:
     data['stocks'].append(stock_data.__repr__())
 
 
-with open('stock-data.json', 'w') as f:
-    for stock in data['stocks']:
-        json.dump(stock,f,indent=2,sort_keys=True)
+with open('stock_data.json', 'w') as f:
+    json.dump(data,f,indent=2,sort_keys=True)
