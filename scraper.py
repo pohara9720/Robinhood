@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import json 
-from helpers import convert_price,convert_volume
+from helpers import convert_price,convert_volume,convert_percentage
 
 url = 'https://finance.yahoo.com/gainers'
 response = requests.get(url,timeout=5)
@@ -38,8 +38,10 @@ for row in table_rows:
     name = row.find('td', {'aria-label': 'Name'}).text
     price_text = row.find('td',{'aria-label':'Price (Intraday)'}).span.text
     price = convert_price(price_text) # Convert price to workable integer
-    dollar_change = row.find('td', {'aria-label': 'Change'}).span.text
-    percent_change = row.find('td', {'aria-label': '% Change'}).span.text
+    dollar_change_text = row.find('td', {'aria-label': 'Change'}).span.text
+    dollar_change = convert_price(dollar_change_text) # Convert dollar change to workable integer
+    percent_change_text = row.find('td', {'aria-label': '% Change'}).span.text
+    percent_change = convert_percentage(percent_change_text) # Convert percentage change to workable integer
     volume_text = row.find('td', {'aria-label': 'Volume'}).span.text
     volume = convert_volume(volume_text) # Convert volume to workable integer
     # Create new object
