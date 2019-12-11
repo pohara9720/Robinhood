@@ -4,7 +4,20 @@ def convert_price(text):
     to_float = float(removed_commas)
     return int(to_float * 100)
 
-#TODO need to convert volume to be a readable number with out M and K
-# Convert volume to 
-def convert_volume(price):
-    print('to be implemented')
+# Convert volume to workable integer
+def convert_volume(volume_string):
+    millions = volume_string.count('M') 
+    remove_m = volume_string.replace('M','')
+    remove_commas = remove_m.replace(',','')
+    volume_float = float(remove_commas)
+    if millions >= 1:
+        return int(volume_float * 1000000)
+    else:
+        return int(volume_float)
+
+
+
+
+    
+    
+    
