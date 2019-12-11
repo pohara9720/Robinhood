@@ -1,5 +1,8 @@
 import json
 from select_stock import select_stock
+from scraper import scrape_stocks
+## Scrape the web for stocks
+scrape_stocks()
 
 todays_stocks = []
 
