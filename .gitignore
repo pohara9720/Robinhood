@@ -3,3 +3,6 @@ robinhood-env
 stock_data.json
 
 .vscode
+
+__pycache__/
+*.py[cod]

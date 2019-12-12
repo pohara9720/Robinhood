@@ -3,7 +3,7 @@ from select_stock import select_stock
 from scraper import scrape_stocks,scrape_fear_greed_index
 
 ##Generate array of stocks that meet critieria to trade today
-def pick_stocks_for_today():
+def get_suitable_stocks():
     ## Array of stocks to populate
     todays_stocks = []
      ## Scrape the web for stocks
@@ -27,7 +27,7 @@ def get_fear_greed_index():
         return current_index
         
 
-stocks = pick_stocks_for_today()
+stocks = get_suitable_stocks()
 fear_greed_index = get_fear_greed_index()
 
 print('Todays stocks chosen are: ', stocks)

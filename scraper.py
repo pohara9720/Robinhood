@@ -69,9 +69,6 @@ def scrape_fear_greed_index():
     #Append to data object
     data['fear_greed_index'] = current_index
 
-
-
-
     #Write data to file to view
     with open('stock_data.json', 'w') as f:
         json.dump(data,f,indent=2,sort_keys=True)
