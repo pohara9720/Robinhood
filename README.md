@@ -8,6 +8,14 @@
 
 `source robinhood-env/bin/activate`
 
+###### Add this alias to create and activate python virtual-env in the future
+
+`alias pv='f() { python3 -m venv $1-env && source $1-env/bin/activate};f'`
+
+###### Use like so
+
+`pv ENV_NAME`
+
 ### Installing dependencies
 
 ###### python stores its dependencies in a `requirements.txt` file. after creating your environment run the following command to install deps.
