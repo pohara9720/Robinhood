@@ -1,5 +1,3 @@
-import json
-
 # NOTE Only stocks with the following criteria should be considered
 # 1) Very high volume so it can be trading and sold quickly and easily
 # 2) Has a percentage change of 3% or higher
